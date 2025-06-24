@@ -1,11 +1,13 @@
 {
   "name": "namastey-react",
   "version": "1.0.0",
-  "description": "",
+  "description": "this is the course taught by Akshay Saini",
   "license": "ISC",
   "author": "amritanshu",
-  "type": "commonjs",
-  "main": "script.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amrit-WEB/Namatey-React.git"
+  },
   "scripts": {
     "dev": "parcel index.html"
   },
@@ -13,6 +15,7 @@
     "parcel": "^2.15.2"
   },
   "dependencies": {
-    "react": "^19.1.0"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   }
 }

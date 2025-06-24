@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 2rem;
+  align-items: center;
+  background: #ffb300;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 179, 0, 1) 0%,
+    rgba(255, 238, 0, 1) 100%
+  );
+}
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.logo {
+  width: 60px;
+  border-radius: 100%;
+}
+.logo-text {
+  color: brown;
+  font-family: "Darumadrop One", sans-serif;
+  font-size: 15px;
+  font-weight: light;
+  letter-spacing: 1px;
+  text-transform: Uppercase;
+}
+.nav-items > ul {
+  display: flex;
+}
+.nav-items > ul > li {
+  padding: 10px;
+  margin: 10px;
+  list-style: none;
+}
+.res-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.res-card {
+  width: 250px;
+  border-radius: 10px;
+  transition: all 0.3s;
+  background-color: #fff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border: 1px solid #ffc100;
+}
+.res-card:hover {
+  cursor: pointer;
+  background-color: #fff6da;
+}
+.res-logo {
+  width: 230px;
+  margin: 10px;
+  border-radius: 10px;
+}
+.res-text-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px;
+}
+
+.res-cuisine {
+  color: gray;
+}
+.res-ratinganddelivery {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.res-rating {
+  padding: 5px 10px;
+  background-color: #ffe8a1;
+  border-radius: 10px;
+}
