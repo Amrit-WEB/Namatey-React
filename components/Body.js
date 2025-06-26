@@ -1,0 +1,49 @@
+import RestaurantCard from "./RestaurantCard";
+import SearchBar from "./SearchBar";
+import { resList } from "../utils/mockData";
+import { useEffect, useState } from "react";
+import { CORS_PROXY } from "../utils/constants";
+import ShimmerUI from "./ShimmerUI";
+
+const Body = () => {
+  console.log("Body");
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [filterRestaurants, setFilterRestaurants] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+  const fetchData = async () => {
+    const data = await fetch(
+      `${CORS_PROXY}https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999&page_type=DESKTOP_WEB_LISTING`
+    );
+    const json = await data.json();
+    const finaldata =
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
+    setListOfRestaurants(finaldata);
+    setFilterRestaurants(finaldata);
+  };
+  return (
+    <div className="body">
+      <div className="search-container">
+        <SearchBar
+          placeholder="Search for restaurants and food"
+          originalData={listOfRestaurants}
+          filterRestaurantsCallback={setFilterRestaurants}
+        />
+      </div>
+      <div className="res-container">
+        {filterRestaurants.length === 0 ? (
+          <ShimmerUI />
+        ) : (
+          filterRestaurants?.map((restaurant) => (
+            <RestaurantCard key={restaurant?.info?.id} resData={restaurant} />
+          ))
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Body;
