@@ -1,12 +1,10 @@
 import RestaurantCard from "./RestaurantCard";
 import SearchBar from "./SearchBar";
-import { resList } from "../utils/mockData";
 import { useEffect, useState } from "react";
 import { CORS_PROXY } from "../utils/constants";
 import ShimmerUI from "./ShimmerUI";
 
 const Body = () => {
-  console.log("Body");
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filterRestaurants, setFilterRestaurants] = useState([]);
 
