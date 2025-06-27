@@ -2,6 +2,7 @@ import { useRouteError } from "react-router-dom";
 import { ERROR_IMAGE } from "../utils/constants";
 const Error = () => {
   const err = useRouteError();
+
   return (
     <div className="error-container">
       <div className="error-img-box">
@@ -10,7 +11,7 @@ const Error = () => {
       <div className="error-text-box">
         <h1>Oops !! Something Went Wrong.</h1>
         <h2>
-          {err.status} : {err.statusText}
+          {err !== null ? err.status + ":" + err.statusText : "Page Not Found"}
         </h2>
       </div>
     </div>
