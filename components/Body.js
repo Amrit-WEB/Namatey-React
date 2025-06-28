@@ -40,6 +40,7 @@ const Body = () => {
             <Link
               key={restaurant?.info?.id}
               to={"/restaurants/" + restaurant?.info?.id}
+              className="res-card-link"
             >
               <RestaurantCard resData={restaurant} />
             </Link>

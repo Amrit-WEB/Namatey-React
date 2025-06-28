@@ -41,8 +41,9 @@ const RestaurantMenu = () => {
     costForTwoMessage,
     avgRatingString,
   } = restaurantInfo;
-
-  return Object.keys(restaurantInfo).length === 0 ? (
+  console.log(listOfMenu);
+  console.log(restaurantInfo);
+  return Object.keys(restaurantInfo)?.length === 0 ? (
     <Error />
   ) : (
     <div className="menu-container">
@@ -62,29 +63,31 @@ const RestaurantMenu = () => {
       </div>
       <p>•------------ MENU ------------•</p>
       <ul>
-        {listOfMenu.map((menu) => (
-          <li key={menu.card.info.id}>
+        {listOfMenu?.map((menu) => (
+          <li key={menu?.card?.info?.id}>
             <div className="menu-card-container">
               <div className="menu-card-left">
-                <h3>{menu.card.info.name}</h3>
-                <h4>Rs.{menu.card.info.price / 100}</h4>
+                <h3>{menu?.card?.info?.name}</h3>
+                <h4>Rs.{menu?.card?.info?.price / 100}</h4>
                 <p>
                   <span>
-                    ⭐ {menu.card.info.ratings.aggregatedRating.rating}
+                    ⭐ {menu?.card?.info?.ratings?.aggregatedRating?.rating}
                   </span>{" "}
-                  ({menu.card.info.ratings.aggregatedRating.ratingCount})
+                  ({menu?.card?.info?.ratings?.aggregatedRating?.ratingCount})
                 </p>
                 <p>
-                  {menu.card.info.description.length > 150
-                    ? menu.card.info.description.slice(0, 149) + "...more"
-                    : menu.card.info.description}
+                  {menu?.card?.info?.description?.length > 150
+                    ? menu?.card?.info?.description?.slice(0, 149) + "...more"
+                    : menu?.card?.info?.description}
                 </p>
               </div>
               <div className="menu-card-right">
-                <img
-                  src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${menu.card.info.imageId}`}
-                  alt="menu-image"
-                />
+                <div className="menu-card-image-box">
+                  <img
+                    src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${menu.card.info.imageId}`}
+                    alt="menu-image"
+                  />
+                </div>
                 <button>Add</button>
               </div>
             </div>

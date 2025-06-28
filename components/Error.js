@@ -11,7 +11,9 @@ const Error = () => {
       <div className="error-text-box">
         <h1>Oops !! Something Went Wrong.</h1>
         <h2>
-          {err !== null ? err.status + ":" + err.statusText : "Page Not Found"}
+          {err !== null
+            ? err?.status + ":" + err?.statusText
+            : "Page Not Found"}
         </h2>
       </div>
     </div>

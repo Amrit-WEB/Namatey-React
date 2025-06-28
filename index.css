@@ -140,6 +140,13 @@
   list-style: none;
   color: #000;
 }
+.links {
+  text-decoration: none;
+  color: black;
+}
+.links:hover {
+  text-decoration: underline;
+}
 
 /*SearchBar CSS*/
 .search-container {
@@ -189,7 +196,11 @@
 }
 /*Restaurants CARDS CSS*/
 .res-card {
-  width: 250px;
+  width: 270px;
+  height: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border-radius: 10px;
   transition: all 0.3s;
   background-color: #fff;
@@ -200,9 +211,15 @@
   cursor: pointer;
   background-color: #fff6da;
 }
-.res-logo {
-  width: 230px;
+.res-logo-container {
+  width: 250px;
+  max-height: 160px;
+  overflow: hidden;
+  border-radius: 10px;
   margin: 10px;
+}
+.res-logo {
+  width: 100%;
   border-radius: 10px;
 }
 .res-text-container {
@@ -224,6 +241,10 @@
   padding: 5px 10px;
   background-color: #ffe8a1;
   border-radius: 10px;
+}
+.res-card-link {
+  text-decoration: none;
+  color: black;
 }
 
 /*Restaurants MENU CSS*/
@@ -278,10 +299,11 @@ ul > li {
 
 .menu-card-container {
   width: 65%;
-  border-bottom: 1px solid #cdcdcd;
+  border-top: 1px solid #cdcdcd;
   margin: 1rem auto;
   display: flex;
   justify-content: space-between;
+  gap: 3rem;
   padding: 1.4rem 0.5rem;
 }
 .menu-card-left {
@@ -296,8 +318,14 @@ ul > li {
 .menu-card-right {
   position: relative;
 }
-.menu-card-right > img {
+.menu-card-image-box {
   width: 250px;
+  max-height: 250px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.menu-card-image-box > img {
+  width: 100%;
   border-radius: 20px;
 }
 .menu-card-right > button {
