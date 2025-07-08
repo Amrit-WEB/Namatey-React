@@ -1,35 +1,18 @@
-import { useEffect, useState } from "react";
-import { CORS_PROXY } from "../utils/constants";
 import ShimmerUI from "./ShimmerUI";
 import Error from "./Error";
+import useRestaurantMenu from "../customHooks/useRestaurantMenu";
 import { useParams } from "react-router-dom";
+import useOnlineStatus from "../customHooks/useOnlineStatus";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
+  const [listOfMenu, restaurantInfo] = useRestaurantMenu(resId);
+  const onlineStatus = useOnlineStatus();
 
-  const [listOfMenu, setListOfMenu] = useState(null);
-  const [restaurantInfo, setRestaurantInfo] = useState(null);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const data = await fetch(
-      `${CORS_PROXY}https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9352403&lng=77.624532&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`
+  if (onlineStatus === false)
+    return (
+      <h1>Looks like you are offline,please check your internet connection</h1>
     );
-    const json = await data.json();
-    console.log(json);
-    if (json.data.cards) {
-      setRestaurantInfo(json?.data?.cards[2]?.card?.card?.info);
-      setListOfMenu(
-        json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-          ?.card?.itemCards
-      );
-    } else {
-      setRestaurantInfo({});
-    }
-  };
 
   if (restaurantInfo === null) return <ShimmerUI />;
 
@@ -41,8 +24,7 @@ const RestaurantMenu = () => {
     costForTwoMessage,
     avgRatingString,
   } = restaurantInfo;
-  console.log(listOfMenu);
-  console.log(restaurantInfo);
+
   return Object.keys(restaurantInfo)?.length === 0 ? (
     <Error />
   ) : (

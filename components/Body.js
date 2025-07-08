@@ -23,6 +23,7 @@ const Body = () => {
     setListOfRestaurants(finaldata);
     setFilterRestaurants(finaldata);
   };
+
   return (
     <div className="body">
       <div className="search-container">
