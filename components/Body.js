@@ -13,15 +13,19 @@ const Body = () => {
     fetchData();
   }, []);
   const fetchData = async () => {
-    const data = await fetch(
-      `${CORS_PROXY}https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999&page_type=DESKTOP_WEB_LISTING`
-    );
-    const json = await data.json();
-    const finaldata =
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
-    setListOfRestaurants(finaldata);
-    setFilterRestaurants(finaldata);
+    try {
+      const data = await fetch(
+        `${CORS_PROXY}https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999&page_type=DESKTOP_WEB_LISTING`
+      );
+      const json = await data.json();
+      const finaldata =
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants;
+      setListOfRestaurants(finaldata);
+      setFilterRestaurants(finaldata);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

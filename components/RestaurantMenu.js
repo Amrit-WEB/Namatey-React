@@ -11,7 +11,9 @@ const RestaurantMenu = () => {
 
   if (onlineStatus === false)
     return (
-      <h1>Looks like you are offline,please check your internet connection</h1>
+      <h1 style={{ textAlign: "center", margin: "1rem" }}>
+        Looks like you are offline, please check your internet connection.
+      </h1>
     );
 
   if (restaurantInfo === null) return <ShimmerUI />;
