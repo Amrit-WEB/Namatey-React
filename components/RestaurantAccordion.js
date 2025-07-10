@@ -1,13 +1,17 @@
 import { useState } from "react";
 
-const RestaurantAccordion = ({ restMenu }) => {
+const RestaurantAccordion = ({ restMenu, isOpen, setShowIndex }) => {
   const { title, itemCards } = restMenu?.card?.card;
 
-  console.log(itemCards[0]);
-  const [isOpen, setIsOpen] = useState(false);
+  //uncontrolled component hai kyuki ye khud apna state manage kar raha hai (although ye koi galat code nhi hai but hamara requirement hai ki hum advance accordion banaye jisme ek expand ho to baki sab close ho jaye to ise me humen is component ko parent ke throgh controll karna parega isliye hum ise abhi uncontroll component bol rahe hai requiremnet ke hisab se)
+  // const [isOpen, setIsOpen] = useState(false);
+  // const toggleAccordion = () => {
+  //   setIsOpen(!isOpen);
+  // };
 
+  //ye function apne parent ke state ko change kar rahe --- lifting state up ke through
   const toggleAccordion = () => {
-    setIsOpen(!isOpen);
+    setShowIndex();
   };
 
   return (

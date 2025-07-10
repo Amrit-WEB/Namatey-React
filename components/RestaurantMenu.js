@@ -4,11 +4,14 @@ import useRestaurantMenu from "../customHooks/useRestaurantMenu";
 import { useParams } from "react-router-dom";
 import useOnlineStatus from "../customHooks/useOnlineStatus";
 import RestaurantAccordion from "./RestaurantAccordion";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const [listOfMenu, restaurantInfo] = useRestaurantMenu(resId);
   const onlineStatus = useOnlineStatus();
+
+  const [isOpen, setIsOpen] = useState(0);
 
   if (onlineStatus === false)
     return (
@@ -49,7 +52,12 @@ const RestaurantMenu = () => {
       <p>•------------ MENU ------------•</p>
       <ul>
         {listOfMenu.map((menu, index) => (
-          <RestaurantAccordion key={index + "123"} restMenu={menu} />
+          <RestaurantAccordion
+            key={index + "123"}
+            restMenu={menu}
+            isOpen={index === isOpen ? true : false}
+            setShowIndex={() => setIsOpen(index)}
+          />
         ))}
       </ul>
     </div>
