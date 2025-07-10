@@ -385,5 +385,5 @@ ul > li {
 .accordion-content.open {
   overflow: auto;
   padding: 15px 20px;
-  max-height: 500px;
+  max-height: 100vh;
 }

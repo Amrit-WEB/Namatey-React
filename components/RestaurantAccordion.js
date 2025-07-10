@@ -3,6 +3,7 @@ import { useState } from "react";
 const RestaurantAccordion = ({ restMenu }) => {
   const { title, itemCards } = restMenu?.card?.card;
 
+  console.log(itemCards[0]);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleAccordion = () => {
@@ -23,7 +24,11 @@ const RestaurantAccordion = ({ restMenu }) => {
                 <div className="menu-card-container">
                   <div className="menu-card-left">
                     <h3>{menu?.card?.info?.name}</h3>
-                    <h4>Rs.{menu?.card?.info?.price / 100}</h4>
+                    <h4>
+                      Rs.
+                      {menu?.card?.info?.price / 100 ||
+                        menu?.card?.info?.defaultPrice / 100}
+                    </h4>
                     <p>
                       <span>
                         ⭐ {menu?.card?.info?.ratings?.aggregatedRating?.rating}
