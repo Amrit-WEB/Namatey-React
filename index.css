@@ -351,3 +351,39 @@ ul > li {
   position: absolute;
   margin: 5px;
 }
+
+/* Restaurant Accordio */
+.accordion-item {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  background-color: #f2f2f2;
+  padding: 15px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-icon {
+  font-size: 18px;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  background-color: #fafafa;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 20px;
+}
+
+.accordion-content.open {
+  overflow: auto;
+  padding: 15px 20px;
+  max-height: 500px;
+}

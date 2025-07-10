@@ -16,11 +16,19 @@ const useRestaurantMenu = (resId) => {
     const json = await data.json();
 
     if (json.data.cards) {
+      const filterMenu =
+        json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+          (data) => {
+            return (
+              data?.card?.card?.["@type"] ===
+              "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+            );
+          }
+        );
+
       setRestaurantInfo(json?.data?.cards[2]?.card?.card?.info);
-      setListOfMenu(
-        json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-          ?.card?.itemCards
-      );
+      // setListOfMenu(json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards);
+      setListOfMenu(filterMenu);
     } else {
       setRestaurantInfo({});
     }
