@@ -342,3 +342,12 @@ ul > li {
   transform: translate(-50%, -50%);
   text-transform: uppercase;
 }
+
+/* Tags */
+.open-label {
+  background-color: #0acd0a;
+  padding: 0.7rem;
+  border-radius: 5px;
+  position: absolute;
+  margin: 5px;
+}

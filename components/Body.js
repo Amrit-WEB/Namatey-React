@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withOpenLabel } from "./RestaurantCard";
 import SearchBar from "./SearchBar";
 import { useEffect, useState } from "react";
 import { CORS_PROXY } from "../utils/constants";
@@ -8,6 +8,9 @@ import { Link } from "react-router-dom";
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filterRestaurants, setFilterRestaurants] = useState([]);
+
+  //HOC
+  const OpenRestaurantCard = withOpenLabel(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -47,7 +50,13 @@ const Body = () => {
               to={"/restaurants/" + restaurant?.info?.id}
               className="res-card-link"
             >
-              <RestaurantCard resData={restaurant} />
+              {/* Higher Order Component add as <OpenRestaurantCar /> */}
+              {restaurant?.info?.isOpen ? (
+                <OpenRestaurantCard resData={restaurant} />
+              ) : (
+                // withOpenLabel(<RestaurantCard resData={restaurant} />)
+                <RestaurantCard resData={restaurant} />
+              )}
             </Link>
           ))
         )}

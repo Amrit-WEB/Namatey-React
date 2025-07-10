@@ -22,4 +22,16 @@ const RestaurantCard = ({ resData }) => {
   );
 };
 
+//HIGHER ORDER COMPONENT
+export const withOpenLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="open-label">Open Now !</label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
+
 export default RestaurantCard;
