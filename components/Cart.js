@@ -1,11 +1,16 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clearItem } from "../Redux/cartSlice";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cartItems);
   const totalprice = cartItems.reduce((acc, item) => {
     return acc + (item.defaultPrice / 100 || item.price / 100);
   }, 0);
-  console.log(totalprice);
+
+  const dispatch = useDispatch();
+  const handleClearCart = () => {
+    dispatch(clearItem());
+  };
 
   return (
     <div className="cart-container">
@@ -18,9 +23,15 @@ const Cart = () => {
       ) : (
         <>
           <h1>Cart</h1>
+
           <div className="cart-detail-box">
             <div className=" cart-item-box">
-              <h2>Items</h2>
+              <div className="cart-item-box-header">
+                <h2>Items</h2>
+                <button className="cart-btn-clear" onClick={handleClearCart}>
+                  Clear Cart
+                </button>
+              </div>
               <div className="item-detail-container">
                 {cartItems.map((item, index) => {
                   return (

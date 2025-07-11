@@ -413,6 +413,10 @@ ul > li {
   padding: 0.5rem;
   width: 40%;
 }
+.cart-item-box-header {
+  display: flex;
+  justify-content: space-between;
+}
 .item-detail-container {
   max-height: 40vh;
   overflow: auto;
@@ -440,4 +444,12 @@ ul > li {
   cursor: pointer;
   font-weight: bold;
   font-size: 16px;
+}
+.cart-btn-clear {
+  background: black;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  padding: 0.6rem 1rem;
 }
