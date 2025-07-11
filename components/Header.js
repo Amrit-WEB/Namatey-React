@@ -6,8 +6,15 @@ import { Link } from "react-router-dom";
 //import that context Object
 import UserContext from "../utils/UserContext";
 
+//import Redux Subscriber for reading the data from appStore
+import { useSelector } from "react-redux";
+
 const Header = () => {
   const onlineStatus = useOnlineStatus();
+
+  //SUbscriber for Redux
+  const cartNumber = useSelector((store) => store.cartItems);
+  console.log(cartNumber);
 
   //consume that context in a variable
   const loggedInUser = useContext(UserContext);
@@ -37,6 +44,7 @@ const Header = () => {
           </li>
           <li>
             <Link to="/cart" className="links">
+              <span className="cart-span">{cartNumber.length}</span>
               Cart
             </Link>
           </li>

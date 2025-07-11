@@ -1,4 +1,8 @@
-import { useState } from "react";
+// import { useState } from "react";
+
+//import Redux here for dispatching
+import { useDispatch } from "react-redux";
+import { addItem } from "../Redux/cartSlice";
 
 const RestaurantAccordion = ({ restMenu, isOpen, setShowIndex }) => {
   const { title, itemCards } = restMenu?.card?.card;
@@ -12,6 +16,12 @@ const RestaurantAccordion = ({ restMenu, isOpen, setShowIndex }) => {
   //ye function apne parent ke state ko change kar rahe --- lifting state up ke through
   const toggleAccordion = () => {
     setShowIndex();
+  };
+
+  //Cart Dispatching
+  const dispatch = useDispatch();
+  const handleAddItem = (menu) => {
+    dispatch(addItem(menu));
   };
 
   return (
@@ -55,7 +65,9 @@ const RestaurantAccordion = ({ restMenu, isOpen, setShowIndex }) => {
                         alt="menu-image"
                       />
                     </div>
-                    <button>Add</button>
+                    <button onClick={() => handleAddItem(menu?.card?.info)}>
+                      Add +
+                    </button>
                   </div>
                 </div>
               </li>

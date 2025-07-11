@@ -147,6 +147,13 @@
 .links:hover {
   text-decoration: underline;
 }
+.cart-span {
+  clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+  background: #ff0000;
+  padding: 0.3rem 0.8rem;
+  color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
 
 /*SearchBar CSS*/
 .search-container {
@@ -386,4 +393,51 @@ ul > li {
   overflow: auto;
   padding: 15px 20px;
   max-height: 100vh;
+}
+
+/* cart styling */
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+.empty-cart-img {
+  width: 500px;
+  margin: 2rem;
+}
+.cart-detail-box {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 0.5rem;
+  width: 40%;
+}
+.item-detail-container {
+  max-height: 40vh;
+  overflow: auto;
+  margin-top: 1rem;
+}
+.item-detail-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.4rem;
+}
+.cart-price-box {
+  border-top: 1px solid black;
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+.cart-btn-pay {
+  background: green;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
 }
