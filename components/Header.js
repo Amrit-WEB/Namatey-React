@@ -1,9 +1,16 @@
+import { useContext } from "react";
 import useOnlineStatus from "../customHooks/useOnlineStatus";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 
+//import that context Object
+import UserContext from "../utils/UserContext";
+
 const Header = () => {
   const onlineStatus = useOnlineStatus();
+
+  //consume that context in a variable
+  const loggedInUser = useContext(UserContext);
   return (
     <div className="header">
       <div className="logo-container">
@@ -33,6 +40,7 @@ const Header = () => {
               Cart
             </Link>
           </li>
+          <li>Hi, {loggedInUser.isLoggedIn}</li>
         </ul>
       </div>
     </div>

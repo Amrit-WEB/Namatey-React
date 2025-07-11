@@ -8,16 +8,21 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import AboutClass from "./components/AboutClass";
 
 //Lazy Load import
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useContext, useState } from "react";
+import UserContext from "./utils/UserContext";
 // import Grocery from "./components/Grocery";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    //Modifying the value of that context
+    <UserContext.Provider value={{ isLoggedIn: "Amrit" }}>
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 
